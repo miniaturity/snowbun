@@ -1,71 +1,93 @@
 <script lang="ts">
-	import Button from "$lib/components/Button.svelte";
-  import mini from "$lib/assets/image.png";
+  import ZooBanner from "$lib/components/Zoo.svelte";
+  import banner1 from "$lib/assets/seabunnyyt.webp";
+
+  let banner = banner1; 
 
 </script>
 
 <main>
-  <div class="buttons">
-    <Button 
-      btn="small"
-      href="https://miniaturity.com/" 
-      alt="creator (miniaturity)"
-      img={mini}
-      className="_a"
-    />
-    <Button 
-      btn="small"
-      href="https://miniaturity.com/"
-      alt="ph"
-      img={mini}
-      className="_b"
-    />
-    <Button 
-      btn="medium"
-      href="https://miniaturity.com/"
-      alt="ph"
-      img={mini}
-      className="_c"
-    />
-    <Button 
-      btn="large"
-      href="https://miniaturity.com/"
-      alt="ph"
-      text="testestestest"
-      className="_d"
-    />
-  </div>
+  <ZooBanner />
+  <header>
+    <nav>
+
+    </nav>
+    <div id="banner">
+      <div style="flex-grow: 1;"></div>
+      <span>sea bunny</span>
+      <img src={banner} alt="banner" id="banner-img"/>
+      <div id="overlay"></div>
+    </div>
+    
+  </header>
 </main>
 
 <style lang="scss">
+  @use "../lib/styles/globals";
+
+  :global(:root) {
+    --margin: 4px;
+
+    --nav: #a0a0a0;
+  }
+
   :global(body) {
     margin: 0;
     font-family: "Roboto", sans-serif;
   }
 
   main {
-    position: relative;
-    width: 100vw; height: 100vh;
-    background-image: linear-gradient(rgba(149, 149, 149, 0.5), rgba(149, 149, 149, 0.5)), url(../lib/assets/coralreef.gif);
-    background-size: cover;
+    display: flex;
+    width: 50vw; height: 100vh;
 
-    display: grid;
-
-  }
-
-  .buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-
-    width: 400px;
-    height: 400px;
-    align-self: center;
+    flex-direction: column;
+    align-items: center;
     justify-self: center;
+    
+    background: #fff;
   }
 
-  :global(._a) { grid-area: 1 / 1 / 2 / 2; }
-  :global(._b) { grid-area: 1 / 2 / 2 / 3; }
-  :global(._c) { grid-area: 2 / 1 / 3 / 3; }
-  :global(._d) { grid-area: 1 / 3 / 3 / 4; }
+  header {
+    height: 50%;
+    width: 100%;
+  }
+
+  nav {
+    height: 10%;
+    width: 100%;
+
+    background: var(--nav);
+  }
+
+  #banner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%; height: 80%;
+    
+
+    & span {
+      z-index: 2;
+      margin: calc(var(--margin) * 3);
+      font-size: 3rem;
+      color: #fff;
+    }
+  }
+
+  #banner-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  #overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg,rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.66) 90%);
+  }
+
 </style>
