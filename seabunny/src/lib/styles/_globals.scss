@@ -2,6 +2,34 @@ $mobile: 768px;
 $tablet: 1024px;
 $desktop: 1200px;
 
+$margin: 4px;
+
+$main: #1F53FF;
+$hl: #ffd900;
+
+:global(:root) {
+  font-size: 16px;
+}
+
+:global(body) {
+  margin: 0;
+  font-family: u001, sans-serif;  
+}
+
+:global(::selection) {
+  color: #000;
+  background-color: $hl;
+}
+
+:global(a) {
+  color: $main;
+  &:hover {
+    background-color: $hl;
+    color: #000;
+  }
+}
+
+
 @mixin mobile-only {
   @media (max-width: $mobile) {
     @content;
@@ -18,4 +46,32 @@ $desktop: 1200px;
   @media (min-width: $desktop) {
     @content;
   }
+}
+
+@font-face {
+  font-family: u001;
+  font-style: normal;
+  font-weight: normal;
+  src: url(../assets/fonts/u001-reg.ttf);
+}
+
+@font-face {
+  font-family: u001;
+  font-style: normal;
+  font-weight: bold;
+  src: url(../assets/fonts/u001-bol.ttf);
+}
+
+@font-face {
+  font-family: u001;
+  font-style: italic;
+  font-weight: normal;
+  src: url(../assets/fonts/u001-ita.ttf);
+}
+
+@font-face {
+  font-family: u001;
+  font-style: italic;
+  font-weight: bold;
+  src: url(../assets/fonts/u001-bolita.ttf)
 }
