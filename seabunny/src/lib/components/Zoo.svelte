@@ -1,17 +1,6 @@
 <style lang="scss">
 	@use "../styles/globals";
 
-	@font-face {
-			font-family: 'Phantom Sans';
-			src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff')
-					format('woff'),
-					url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff2')
-					format('woff2');
-			font-weight: bold;
-			font-style: normal;
-			font-display: swap;
-	}
-
 	#zoo_linkBanner {
 		background-color: #1F53FF;
 		padding: 10px;
@@ -31,7 +20,7 @@
 		text-decoration: none;
 		color: white;
 
-		& span {
+		& span:not(.material-symbols-outlined) {
 			padding: 4px;
 		}
 
@@ -49,7 +38,7 @@
 
 <a href = "https://zoo.hackclub.com">
 	<div id="zoo_linkBanner">
-			<span>check out more @ the zoo!</span>
+			<span>check out more @ the zoo! <span class="material-symbols-outlined">pets</span> </span> 
 	</div>
 </a>
 <div style="height: 85px"></div>

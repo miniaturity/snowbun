@@ -7,8 +7,28 @@ $margin: 4px;
 $main: #1F53FF;
 $hl: #ffd900;
 
+@mixin mobile-only {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
 :global(:root) {
-  font-size: 16px;
+  @include desktop-up { font-size: 16px; }
+  @include tablet-up { font-size: 14px; }
+  @include mobile-only { font-size: 12px; }
 }
 
 :global(body) {
@@ -26,25 +46,6 @@ $hl: #ffd900;
   &:hover {
     background-color: $hl;
     color: #000;
-  }
-}
-
-
-@mixin mobile-only {
-  @media (max-width: $mobile) {
-    @content;
-  }
-}
-
-@mixin tablet-up {
-  @media (min-width: $tablet) {
-    @content;
-  }
-}
-
-@mixin desktop-up {
-  @media (min-width: $desktop) {
-    @content;
   }
 }
 

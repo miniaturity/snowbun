@@ -1,30 +1,39 @@
 <script lang="ts">
+  import Header from "$lib/components/header.svelte";
   import ZooBanner from "$lib/components/zoo.svelte";
-  import sbicon from "$lib/assets/images/sbicob.png";
-  import crbgn from "$lib/assets/images/crbgn.png";
-  import aqcn from "$lib/assets/images/aqcn.png";
 
+  import aqcn from "$lib/assets/images/aqcn.png";
+  import aq2cn from "$lib/assets/images/aq2cn.png";
+  import aq3cn from "$lib/assets/images/aq3cn.png";
+  import aq4cn from "$lib/assets/images/aq4cn.png";
+	import Breadcrumbs from "$lib/components/breadcrumbs.svelte";
+	import { onMount } from "svelte";
+
+  const paths: string[] = [
+    "/main",
+    "/exhibit",
+    "/zoo",
+  ];
+
+  let randomPath = "/";
+
+  onMount(() => {
+    randomPath = paths[Math.floor(Math.random() * paths.length)];
+  })
 </script>
 
 <main>
   <ZooBanner />
-  <header>
-    <div id="banner">
-      <div id="inner-banner">
-        <div>
-          <span id="header-text">sea bunny</span>
-          <img alt="seabunny" src={sbicon}/>
-        </div>
-      </div>
-      <img alt="coralreef" src={crbgn} id="banner-img"/>
-    </div>
-  </header>
+  <Breadcrumbs />
+  <Header 
+    text="directory"
+  />
   <div id="title">
     <span>
       welcome to the directory. find out more about sea bunnies!
     </span>
     <div>
-      <a href="https://miniaturity.com">
+      <a href={randomPath}>
         im feeling lucky
       </a>
       &nbsp;—&nbsp;
@@ -38,27 +47,38 @@
     </div>
   </div>
   <nav>
-    <button class="nav-button">
+    <a class="nav-button" href="/main">
       <div class="inner-nbutton">
-        <span>a</span>
+        <span>
+          <span>main</span>
+        </span>
       </div>
       <img src={aqcn} alt="" class="navbtn-img"/>
-    </button>
-    <button class="nav-button">
+    </a>
+    <a class="nav-button" href="/exhibit">
       <div class="inner-nbutton">
-        <span>a</span>
+        <span>
+          <span>exhibit</span>
+        </span>
       </div>
-    </button>
-    <button class="nav-button">
+      <img src={aq2cn} alt="" class="navbtn-img"/>
+    </a>
+    <a class="nav-button" href="/gallery">
       <div class="inner-nbutton">
-        <span>a</span>
+        <span>
+          <span>gallery</span>
+        </span>
       </div>
-    </button>
-    <button class="nav-button">
+      <img src={aq4cn} alt="" class="navbtn-img"/>
+    </a>
+    <a class="nav-button" href="https://zoo.hackclub.com/">
       <div class="inner-nbutton">
-        <span>a</span>
+        <span>
+          <span>zoo</span>
+        </span>
       </div>
-    </button>
+      <img src={aq3cn} alt="" class="navbtn-img"/>
+    </a>
   </nav>
 </main>
 
@@ -69,6 +89,8 @@
     display: flex;
     width: 40vw; height: 100vh;
 
+    min-width: 400px;
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -77,9 +99,6 @@
     background: #fff;
   }
 
-  header {
-    width: 100%; height: 40%;
-  }
 
   #title {
     width: 100%; height: 10%;
@@ -127,7 +146,8 @@
       padding: 0;
       background-color: #1F53FF;
       border: none; outline: none;
-            
+      transition: all 0.3s ease;
+      text-decoration: none;
       
       &:nth-child(1) {
         grid-area: 1 / 1 / 3 / 3;
@@ -140,6 +160,18 @@
       }
       &:nth-child(4) {
         grid-area: 1 / 3 / 3 / 5;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        & .inner-nbutton {
+          font-size: 1.8rem;
+        }
+        
+        & img {
+          opacity: 0.4;
+        }
       }
 
     }
@@ -160,72 +192,32 @@
 
     box-sizing: border-box;
 
-    & span { 
+    & span {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+
       border: 1px solid #fff; 
       width: 100%;
       height: 100%;
+      z-index: 2;
+
+      & span {
+        margin: 15px;
+        border: none;
+      }
+
     }
   }
   
-
-  #banner {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%; height: 100%;
-    background: globals.$main;
-    overflow: hidden;
-  }
-
-  #inner-banner {
-    margin: calc(globals.$margin * 2.5);
-    display: flex;
-    align-items: flex-end;
-    border: 1px solid #fff;
-    height: 100%;
-
-    & div {
-      display: flex;
-      flex-direction: column;
-      margin: 15px;
-      z-index: 2;
-    }
-
-    & div > #header-text {
-      font-size: 3rem;
-      font-weight: bold;
-      color: #fff;
-    }
-
-    & div > img {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      width: 30%;
-      height: auto;
-
-      transition: all 0.3s ease;
-
-      &:hover {
-        scale: 1.1;
-      }
-    }
-  }
-
-  #banner-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; height: 100%;
-    opacity: 0.5;
-  }
-
   .navbtn-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%; height: 100%;
     opacity: 0.5;
+    object-fit: cover;
+    transition: all 0.3s ease;
   }
 
 </style>
