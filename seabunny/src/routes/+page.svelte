@@ -1,6 +1,5 @@
 <script lang="ts">
   import Header from "$lib/components/header.svelte";
-  import ZooBanner from "$lib/components/zoo.svelte";
 
   import aqcn from "$lib/assets/images/aqcn.png";
   import aq2cn from "$lib/assets/images/aq2cn.png";
@@ -23,15 +22,15 @@
 </script>
 
 <main>
-  <ZooBanner />
   <Breadcrumbs />
-  <Header 
-    text="directory"
-  />
+  <div style="height: 40%; width: 100%;">
+    <Header 
+      text="directory"
+      showPet
+    />
+  </div>
   <div id="title">
-    <span>
-      welcome to the directory. find out more about sea bunnies!
-    </span>
+    <span>welcome to the directory. please choose a path.</span>
     <div>
       <a href={randomPath}>
         im feeling lucky
@@ -93,7 +92,7 @@
 
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    
     justify-self: center;
     
     background: #fff;
@@ -110,13 +109,6 @@
 
     margin: calc(globals.$margin * 2);
     gap: calc(globals.$margin * 2);
-
-    & span {
-      color: #000;
-      
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
 
     & div {
       display: flex;

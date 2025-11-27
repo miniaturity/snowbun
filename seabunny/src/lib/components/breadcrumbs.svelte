@@ -1,17 +1,15 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  let pathname = '';
+  let pathname = "";
 
   onMount(() => {
     pathname = window.location.pathname;
   });
 
-  const segments = pathname
-    .split("/")
-    .filter(Boolean);
+  $: segments = pathname.split("/").filter(Boolean);
 
-  const breadcrumbs = segments.map((seg, i) => ({
+  $: breadcrumbs = segments.map((seg, i) => ({
     name: seg,
     href: "/" + segments.slice(0, i + 1).join("/")
   }));
@@ -55,6 +53,10 @@
 .breadcrumbs {
   display: flex;
   flex-direction: row;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 </style>

@@ -1,14 +1,15 @@
 $mobile: 768px;
 $tablet: 1024px;
 $desktop: 1200px;
+$largescreen: 1800px;
 
 $margin: 4px;
 
 $main: #1F53FF;
 $hl: #ffd900;
 
-@mixin mobile-only {
-  @media (max-width: $mobile) {
+@mixin mobile-up {
+  @media (min-width: $mobile) {
     @content;
   }
 }
@@ -25,10 +26,16 @@ $hl: #ffd900;
   }
 }
 
+@mixin largescreen-up {
+  @media (min-width: $largescreen) {
+    @content;
+  }
+}
+
 :global(:root) {
-  @include desktop-up { font-size: 16px; }
-  @include tablet-up { font-size: 14px; }
-  @include mobile-only { font-size: 12px; }
+  @include largescreen-up { font-size: 15px !important; }
+  @include desktop-up { font-size: 14px; }
+  @include mobile-up { font-size: 12px; }
 }
 
 :global(body) {

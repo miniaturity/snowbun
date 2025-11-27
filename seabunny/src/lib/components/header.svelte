@@ -5,10 +5,12 @@
 
   let {
     text,
-    bgImage
+    bgImage,
+    showPet
   }: { 
     text: string, 
-    bgImage?: string 
+    bgImage?: string,
+    showPet?: boolean
   } = $props();
 
 </script>
@@ -17,7 +19,9 @@
     <div class="inner-banner">
       <div>
         <span class="header-text">{text}</span>
-        <img alt="seabunny" src={sbicon}/>
+        {#if showPet}
+          <img alt="seabunny" src={sbicon}/>
+        {/if}
       </div>
     </div>
     <img alt="coralreef" src={bgImage || crbgn} class="banner-img"/>
@@ -27,7 +31,7 @@
   @use "../styles/globals";
 
   header {
-    width: 100%; height: 40%;
+    width: 100%; height: 100%;
   }
 
   .banner {
