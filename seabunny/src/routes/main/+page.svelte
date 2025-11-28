@@ -71,6 +71,15 @@
         </tbody>
       </table>
     </div>
+
+    <div id="habitat">
+      <div id="habitat-title">
+        where can they be found?
+      </div>
+      <div>
+        <span style="font-weight: bold;">sea bunnies</span> are found in the indo-pacific ocean, from Japan and the Philippines to Australia, Indonesia, and down to South Africa. they live in shallow, tropical coastal waters and prefer to stay close to the sea floor, where they blend in with sponges and algae. 
+      </div>
+    </div>
   </div>
 </main>
 
@@ -105,6 +114,7 @@
     display: flex;
     flex-direction: row;
     height: 20%; width: 100%;
+    gap: calc(globals.$margin * 2.5);
   }
 
   #header-col {
@@ -150,7 +160,7 @@
     display: flex;
     flex-direction: column;
 
-    width: 50%; height: 50%;
+    width: 50%; height: 100%;
 
     gap: calc(globals.$margin * 2.5);
   }
@@ -174,5 +184,24 @@
       }
     }
     
+  }
+
+  #habitat-title {
+    transform: scale(.8, 1.1);
+    transform-origin: left;
+    font-weight: bold;
+    font-size: 1.7rem;
+  }
+
+  #habitat {
+    width: 50%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(globals.$margin * 2);
+    & div:nth-child(2) {
+      text-align: justify; 
+      text-align-last: justify;
+      font-size: 1.2rem;
+    }
   }
 </style>

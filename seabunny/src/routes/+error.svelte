@@ -1,12 +1,10 @@
 <script lang="ts">
-  import ZooBanner from "$lib/components/zoo.svelte";
   import aq3cn from "$lib/assets/images/aq3cn.png";
 	import Breadcrumbs from "$lib/components/breadcrumbs.svelte";
 
 </script>
 
 <main>
-  <ZooBanner />
 
   <div style="width: 50%;">
     <Breadcrumbs />
@@ -29,9 +27,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     justify-self: center;
 
+    margin-top: calc(globals.$margin * 20);
     width: 40vw; height: 100vh;
 
     min-width: 400px;

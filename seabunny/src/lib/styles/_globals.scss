@@ -3,7 +3,7 @@ $tablet: 1024px;
 $desktop: 1200px;
 $largescreen: 1800px;
 
-$margin: 4px;
+$margin: var(--margin);
 
 $main: #1F53FF;
 $hl: #ffd900;
@@ -33,9 +33,11 @@ $hl: #ffd900;
 }
 
 :global(:root) {
-  @include largescreen-up { font-size: 15px !important; }
+  --margin: 4px;
+
+  @include largescreen-up { font-size: 15px !important; --margin: 4px; }
   @include desktop-up { font-size: 14px; }
-  @include mobile-up { font-size: 12px; }
+  @include mobile-up { font-size: 12px; --margin: 3px; }
 }
 
 :global(body) {

@@ -59,7 +59,7 @@
     </div>
     {#if showButton} 
       <a href="/exhibit">
-        exhibit {">>"}
+        exhibit <span style="font-family: Arial, Helvetica, sans-serif">{">>"}</span>
       </a>
     {/if}
 
@@ -139,6 +139,10 @@
       &:hover {
         cursor: pointer;
       }
+
+      &:focus {
+        color: globals.$main;
+      }
     }
 
     & div {
@@ -152,13 +156,14 @@
 
     text-align: justify; 
     text-align-last: justify;
+    overflow: auto;
   }
 
   .facts-img {
     width: 50%; height: 100%;
 
     & img {
-      width: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
     }
   }
