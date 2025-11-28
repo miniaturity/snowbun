@@ -95,7 +95,8 @@
 
     justify-self: center;
 
-    min-width: 400px;
+    min-width: 320px;
+    overflow: auto;
   }
 
   #top-cols {
@@ -135,6 +136,7 @@
       text-align: justify; 
       text-align-last: justify;
       font-size: 1.2rem;
+      overflow-y: auto;
     }
   }
 

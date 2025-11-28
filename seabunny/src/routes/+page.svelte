@@ -88,7 +88,7 @@
     display: flex;
     width: 40vw; height: 100vh;
 
-    min-width: 400px;
+    min-width: 320px;
 
     flex-direction: column;
     align-items: center;

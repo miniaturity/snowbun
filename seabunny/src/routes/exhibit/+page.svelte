@@ -74,8 +74,9 @@
     width: 40vw; height: 100vh;
     justify-self: center;
 
-    min-width: 400px;
+    min-width: 320px;
     gap: calc(globals.$margin * 2.5);
+    overflow: auto;
   }
 
   #hc {
