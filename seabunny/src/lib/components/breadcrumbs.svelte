@@ -1,18 +1,18 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  let pathname = "";
+  let pathname = $state("");
 
   onMount(() => {
     pathname = window.location.pathname;
   });
 
-  let segments = pathname.split("/").filter(Boolean);
+  let segments = $derived(pathname.split("/").filter(Boolean));
 
-  let breadcrumbs = segments.map((seg, i) => ({
+  let breadcrumbs = $derived(segments.map((seg, i) => ({
     name: seg,
     href: "/" + segments.slice(0, i + 1).join("/")
-  }));
+  })));
 </script>
 
 <div class="breadcrumbs-container">
