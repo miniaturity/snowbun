@@ -14,7 +14,7 @@
     "/zoo",
   ];
 
-  let randomPath = "/";
+  let randomPath = $state("/");
 
   onMount(() => {
     randomPath = paths[Math.floor(Math.random() * paths.length)];

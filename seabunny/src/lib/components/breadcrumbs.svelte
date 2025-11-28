@@ -7,9 +7,9 @@
     pathname = window.location.pathname;
   });
 
-  $: segments = pathname.split("/").filter(Boolean);
+  let segments = pathname.split("/").filter(Boolean);
 
-  $: breadcrumbs = segments.map((seg, i) => ({
+  let breadcrumbs = segments.map((seg, i) => ({
     name: seg,
     href: "/" + segments.slice(0, i + 1).join("/")
   }));
