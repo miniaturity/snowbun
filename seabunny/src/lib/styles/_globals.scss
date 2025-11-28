@@ -8,6 +8,7 @@ $margin: var(--margin);
 $main: #1F53FF;
 $hl: #ffd900;
 
+// Mobile-first mixins (these are correct)
 @mixin mobile-up {
   @media (min-width: $mobile) {
     @content;
@@ -33,11 +34,23 @@ $hl: #ffd900;
 }
 
 :global(:root) {
-  --margin: 4px;
+  --margin: 3px;
+  font-size: 12px;
 
-  @include largescreen-up { font-size: 15px !important; --margin: 4px; }
-  @include desktop-up { font-size: 14px; }
-  @include mobile-up { font-size: 12px; --margin: 3px; }
+  @include mobile-up { 
+    --margin: 3.5px;
+    font-size: 13px;
+  }
+  
+  @include desktop-up { 
+    --margin: 4px;
+    font-size: 14px;
+  }
+  
+  @include largescreen-up { 
+    --margin: 4px;
+    font-size: 15px;
+  }
 }
 
 :global(body) {
